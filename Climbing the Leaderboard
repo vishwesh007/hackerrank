@@ -1,0 +1,21 @@
+Explanation:
+
+put all ranked into ordered set to remove duplicates and save order
+foreach player scores:
+find index in the ranks between greater and lower ranks
+
+//code
+Java 15:
+
+List<Integer> retval = new ArrayList<>();
+
+Integer[] ranks = new TreeSet<>(ranked).toArray(Integer[]::new);
+int rank = ranks.length;
+for (int score : player) {
+    for (int i = ranks.length - rank; i < ranks.length; i++, rank--) {
+        if (ranks[i] > score) break;
+    }
+    retval.add(rank + 1);
+}
+
+return retval;
