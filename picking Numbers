@@ -1,0 +1,23 @@
+explanation
+
+Liniar complexity - sort collection and move the bounds.
+
+both bounds = 0;
+if ok - move upper bound
+if nok - move the lower
+
+
+//code
+Collections.sort(a);
+
+int max = 1;
+for (int start = 0, end = start; end < a.size(); end++) {
+    int d = a.get(end) - a.get(start);
+    while (d > 1) {
+        start++;
+        d = a.get(end) - a.get(start);
+    }
+    int len = end - start + 1;
+    if (len > max) max = len;
+}
+return max;
